@@ -1,0 +1,9 @@
+# IDE files
+.vscode
+
+# Dataset
+/aclImdb
+imdb-review.zip
+
+# MacOS files
+.DS_Store
