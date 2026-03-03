@@ -1,4 +1,7 @@
 import numpy as np
+import pandas as pd
+import sys
+import ast
 
 def pad_features(reviews, seq_length):
     '''Return features of review_ints, where each review is padded with 0's or truncated to the input seq_length.'''
@@ -15,3 +18,13 @@ def pad_features(reviews, seq_length):
     return features
 
 seq_length = 200 # Standard length for reviews (in words)
+
+if __name__ == "__main__":
+    print('Padding features...')
+
+    file_path = sys.argv[1]
+    df = pd.read_csv(file_path)
+    reviews = df['review'].apply(ast.literal_eval) # Convert string representation of list back to list
+    features = pad_features(reviews, seq_length)
+    np.save(file_path.replace('.csv', '_features.npy'), features)
+    print(f'Features saved to {file_path.replace(".csv", "_paddedfeatures.npy")}')
