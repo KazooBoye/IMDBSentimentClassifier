@@ -72,7 +72,7 @@ for epoch in range(epochs):
 
     # Validation loop
     model.eval()
-    val_loss = 0.0
+    test_loss = 0.0
     correct = 0
     total = 0
 
